@@ -11,6 +11,13 @@ public class ApplicantService {
     ApplicantRepository applicantRepository;
     public void createAnApplicant(Applicant applicant){
         applicantRepository.save(applicant);
-    }
 
-}
+
+           if(applicant.getPhone_no().length() != 10){
+            applicantRepository.delete(applicant);
+           }}
+
+       }
+
+
+
