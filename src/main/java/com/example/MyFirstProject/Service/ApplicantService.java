@@ -11,13 +11,15 @@ public class ApplicantService {
     ApplicantRepository applicantRepository;
     public void createAnApplicant(Applicant applicant){
         applicantRepository.save(applicant);
-
-
-           if(applicant.getPhone_no().length() != 10){
+        if(applicant.getPhone_no().length() != 10){
             applicantRepository.delete(applicant);
-           }}
+           }
+       // if (applicant.getEmail_id().toString().endsWith(".com")){
+           // applicantRepository.delete(applicant);
+        }
 
-       }
+
+    }}
 
 
 
