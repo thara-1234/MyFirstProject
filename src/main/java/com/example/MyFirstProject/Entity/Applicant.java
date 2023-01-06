@@ -10,7 +10,7 @@ import java.util.Date;
 @Entity
 public class Applicant {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
     String name;
     Date dob;
@@ -18,14 +18,7 @@ public class Applicant {
     String phone_no;
     String email_id;
 
-    public Applicant(int id, String name, Date dob, String gender, String phone_no, String email_id) {
-        this.id = id;
-        this.name = name;
-        this.dob = dob;
-        this.gender = gender;
-        this.phone_no = phone_no;
-        this.email_id = email_id;
-    }
+
 
     public int getId() {
         return id;

@@ -15,7 +15,8 @@ public class ApplicantController {
     @Autowired
     ApplicantService applicantService;
     @RequestMapping(value = "/applicants",method = RequestMethod.POST)
-    public void createApplicant(@RequestBody Applicant applicant){
+    public void createApplicants(@RequestBody Applicant applicant){
         applicantService.createAnApplicant(applicant);
     }
+
 }
