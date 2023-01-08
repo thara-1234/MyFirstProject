@@ -1,16 +1,19 @@
 package com.example.MyFirstProject.Entity;
 
+import com.example.MyFirstProject.Service.ApplicantService;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
 
 @Entity
 public class Applicant {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     String name;
     Date dob;
