@@ -12,25 +12,33 @@ import java.time.Period;
 public class ApplicantService {
     @Autowired
     ApplicantRepository applicantRepository;
-    public static boolean checkPhNo(Applicant applicant){
-        if(applicant.getPhone_no().length() == 10){
-            return true;
-        }
-        return false;
-    }
-        public static boolean checkEmail(Applicant applicant){
-        if(applicant.getEmail_id().endsWith(".com")) {
-            return true;
-        }
-        return false;
-    }
+
+    //    public static boolean checkPhNo(Applicant applicant){
+//        if(applicant.getPhone_no().length() == 10){
+//            return true;
+//        }
+//        return false;
+//    }
+//        public static boolean checkEmail(Applicant applicant){
+//        if(applicant.getEmail_id().endsWith(".com")) {
+//            return true;
+//        }
+//        return false;
+//    }
+//    public void createAnApplicant(Applicant applicant) {
+//        try{
+//            if(ApplicantService.checkPhNo(applicant)&& ApplicantService.checkEmail(applicant)){
+//                applicantRepository.save(applicant);
+//            }}
+//        catch (Exception e){
+//            e.printStackTrace();
+//        }
     public void createAnApplicant(Applicant applicant) {
-        try{
-        if(ApplicantService.checkPhNo(applicant)&& ApplicantService.checkEmail(applicant)){
-            applicantRepository.save(applicant);
-        }}
-        catch (Exception e){
-            e.printStackTrace();
+        if (applicant.getPhone_no().length() != 10) {
+            throw new IllegalArgumentException("Invalid Phone Number");  // RuntimeException is also fine...Runtime shows a warning
+        }
+        if (!applicant.getEmail_id().endsWith(".com")) {
+            throw new IllegalArgumentException("Invalid Mail ID");
         }
     }
 
@@ -71,11 +79,7 @@ public class ApplicantService {
     }*/
 
 
-
-
-
-
-    }
+}
 
 
 
