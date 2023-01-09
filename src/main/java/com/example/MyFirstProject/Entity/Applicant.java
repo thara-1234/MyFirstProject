@@ -1,25 +1,25 @@
 package com.example.MyFirstProject.Entity;
 
-import com.example.MyFirstProject.Service.ApplicantService;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 public class Applicant {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     String name;
-    Date dob;
+    LocalDate DateOfBirth;
     String gender;
     String phone_no;
     String email_id;
+    int age;
 
 
 
@@ -39,12 +39,12 @@ public class Applicant {
         this.name = name;
     }
 
-    public Date getDob() {
-        return dob;
+    public LocalDate getDateOfBirth() {
+        return DateOfBirth;
     }
 
-    public void setDob(Date dob) {
-        this.dob = dob;
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        DateOfBirth = dateOfBirth;
     }
 
     public String getGender() {
@@ -70,4 +70,15 @@ public class Applicant {
     public void setEmail_id(String email_id) {
         this.email_id = email_id;
     }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 }
+
+
+
