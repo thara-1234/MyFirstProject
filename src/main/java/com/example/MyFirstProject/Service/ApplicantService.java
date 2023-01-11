@@ -12,6 +12,7 @@ import java.util.Objects;
 
 import static java.time.LocalDate.parse;
 import static java.util.Objects.*;
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 public class ApplicantService {
@@ -42,10 +43,13 @@ public class ApplicantService {
            if(applicant.getZipcode().length()!=6){
                throw new IllegalArgumentException("Invalid Zipcode");
            }
-        applicant1 = applicant;
-        if(Objects.isNull(applicant1)){
+
+        if(applicant.getId()==0 || applicant.getPhone_no()==null||applicant.getZipcode()==null||applicant.getAge()==0
+                ||applicant.getEmail_id()==null||applicant.getAddress()==null||applicant.getGender()==null||
+        applicant.getName()==null||applicant.getDob()==null){
             throw new IllegalArgumentException("Values cannot be null");
            }
+
 
 
     }
