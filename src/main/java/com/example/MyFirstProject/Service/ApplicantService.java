@@ -35,6 +35,10 @@ public class ApplicantService {
            if(p.getYears()<18){
                throw new IllegalArgumentException("Not Eligible");
            }
+           if(applicant.getZipcode().length()!=6){
+               throw new IllegalArgumentException("Invalid Zipcode");
+           }
+
 
 
 

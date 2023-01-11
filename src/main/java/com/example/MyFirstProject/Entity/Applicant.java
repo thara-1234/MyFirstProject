@@ -22,6 +22,8 @@ public class Applicant {
     String phone_no;
     String email_id;
     int age;
+    String address;
+    String zipcode;
 
     public int getId() {
         return id;
@@ -77,5 +79,21 @@ public class Applicant {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
     }
 }
