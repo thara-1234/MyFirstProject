@@ -5,23 +5,23 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 public class Applicant {
 
 
-    @Id
+   @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     String name;
-    LocalDate DateOfBirth;
+    LocalDate dob;
     String gender;
     String phone_no;
     String email_id;
     int age;
-
-
 
     public int getId() {
         return id;
@@ -39,12 +39,12 @@ public class Applicant {
         this.name = name;
     }
 
-    public LocalDate getDateOfBirth() {
-        return DateOfBirth;
+    public LocalDate getDob() {
+        return dob;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        DateOfBirth = dateOfBirth;
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
     }
 
     public String getGender() {
@@ -79,6 +79,3 @@ public class Applicant {
         this.age = age;
     }
 }
-
-
-
