@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
-public class Applicant {
+public  class Applicant {
 
 
    @Id
@@ -24,6 +24,24 @@ public class Applicant {
     int age;
     String address;
     String zipcode;
+    public Applicant(){
+
+    }
+
+    public Applicant(String name, LocalDate dob, String gender, String phone_no, String email_id, String address, String zipcode) {
+        this.name = name;
+        this.dob = dob;
+        this.gender = gender;
+        this.phone_no = phone_no;
+        this.email_id = email_id;
+        this.address = address;
+        this.zipcode = zipcode;
+    }
+
+    public Applicant(int id, int age) {
+        this.id = id;
+        this.age = age;
+    }
 
     public int getId() {
         return id;
