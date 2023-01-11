@@ -14,7 +14,7 @@ public  class Applicant {
 
 
    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
     String name;
     LocalDate dob;

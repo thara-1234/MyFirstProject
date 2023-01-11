@@ -18,10 +18,6 @@ import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 public class ApplicantService {
     @Autowired
     ApplicantRepository applicantRepository;
-    private Applicant applicant;
-    private Applicant applicant1;
-
-
     public void createAnApplicant(Applicant applicant) {
 
             if (applicant.getPhone_no().length() != 10) {
@@ -49,6 +45,7 @@ public class ApplicantService {
         applicant.getName()==null||applicant.getDob()==null){
             throw new IllegalArgumentException("Values cannot be null");
            }
+        applicantRepository.save(applicant);
 
 
 
