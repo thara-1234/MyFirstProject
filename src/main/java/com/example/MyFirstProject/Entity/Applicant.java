@@ -24,11 +24,12 @@ public  class Applicant {
     int age;
     String address;
     String zipcode;
+    String password;
     public Applicant(){
 
     }
 
-    public Applicant(String name, LocalDate dob, String gender, String phone_no, String email_id, String address, String zipcode) {
+    public Applicant(String name, LocalDate dob, String gender, String phone_no, String email_id, String address, String zipcode,String password) {
         this.name = name;
         this.dob = dob;
         this.gender = gender;
@@ -36,6 +37,7 @@ public  class Applicant {
         this.email_id = email_id;
         this.address = address;
         this.zipcode = zipcode;
+        this.password=password;
     }
 
     public Applicant(int id, int age) {
@@ -113,5 +115,13 @@ public  class Applicant {
 
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

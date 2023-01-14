@@ -45,6 +45,13 @@ public class ApplicantService {
         applicant.getName()==null||applicant.getDob()==null){
             throw new IllegalArgumentException("Values cannot be null");
            }
+        if(applicant.getPassword().length()!=6 &&  applicant.getPassword().matches("[a-zA-Z0-9]+")){
+            throw new IllegalArgumentException("Invalid Password");
+
+        }
+
+
+
         applicantRepository.save(applicant);
 
 
