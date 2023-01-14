@@ -8,16 +8,15 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Objects;
 
 import static java.time.LocalDate.parse;
-import static java.util.Objects.*;
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 public class ApplicantService {
     @Autowired
     ApplicantRepository applicantRepository;
+     Applicant applicant;
+
     public void createAnApplicant(Applicant applicant) {
 
             if (applicant.getPhone_no().length() != 10) {
@@ -49,18 +48,11 @@ public class ApplicantService {
             throw new IllegalArgumentException("Invalid Password");
 
         }
-
-
-
         applicantRepository.save(applicant);
-
-
-
     }
 
 
-
-}
+        }
 
 
 

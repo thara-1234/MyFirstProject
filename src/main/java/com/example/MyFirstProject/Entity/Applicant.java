@@ -25,6 +25,7 @@ public  class Applicant {
     String address;
     String zipcode;
     String password;
+
     public Applicant(){
 
     }
@@ -124,4 +125,6 @@ public  class Applicant {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 }
