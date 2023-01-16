@@ -1,6 +1,7 @@
 package com.example.MyFirstProject.Controller;
 
 import com.example.MyFirstProject.Entity.Applicant;
+import com.example.MyFirstProject.Entity.LoginApplicant;
 import com.example.MyFirstProject.Service.ApplicantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ public class ApplicantController {
     public void createApplicants(@RequestBody Applicant applicant){
         applicantService.createAnApplicant(applicant);
     }
-
-
-
-}
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    public void login(@RequestBody LoginApplicant loginApplicant){
+        applicantService.loginApplicant(loginApplicant);
+    }}

@@ -1,6 +1,7 @@
 package com.example.MyFirstProject.Service;
 
 import com.example.MyFirstProject.Entity.Applicant;
+import com.example.MyFirstProject.Entity.LoginApplicant;
 import com.example.MyFirstProject.Repository.ApplicantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,13 +18,13 @@ public class ApplicantService {
     ApplicantRepository applicantRepository;
      Applicant applicant;
 
-    public void createAnApplicant(Applicant applicant) {
+     public void createAnApplicant(Applicant applicant) {
 
-            if (applicant.getPhone_no().length() != 10) {
+            if (applicant.getPhoneNo().length() != 10) {
                 throw new IllegalArgumentException("Invalid Phone Number");
             }
 
-            if (!applicant.getEmail_id().endsWith(".com")) {
+            if (!applicant.getEmailId().endsWith(".com")) {
                 throw new IllegalArgumentException("Invalid Mail ID");
         }
 
@@ -39,8 +40,8 @@ public class ApplicantService {
                throw new IllegalArgumentException("Invalid Zipcode");
            }
 
-        if(applicant.getId()==0 || applicant.getPhone_no()==null||applicant.getZipcode()==null||applicant.getAge()==0
-                ||applicant.getEmail_id()==null||applicant.getAddress()==null||applicant.getGender()==null||
+        if(applicant.getId()==0 || applicant.getPhoneNo()==null||applicant.getZipcode()==null||applicant.getAge()==0
+                ||applicant.getEmailId()==null||applicant.getAddress()==null||applicant.getGender()==null||
         applicant.getName()==null||applicant.getDob()==null){
             throw new IllegalArgumentException("Values cannot be null");
            }
@@ -50,9 +51,30 @@ public class ApplicantService {
         }
         applicantRepository.save(applicant);
     }
+    public String loginApplicant(LoginApplicant loginApplicant){
 
-
+        if(applicantRepository.login(loginApplicant.getEmail(),loginApplicant.getPassword())==1) {
+            return loginApplicant.getEmail();
         }
+            else {
+               throw new IllegalArgumentException("Invalid data");
+        }}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

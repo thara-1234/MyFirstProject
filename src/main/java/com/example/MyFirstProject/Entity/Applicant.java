@@ -1,13 +1,11 @@
 package com.example.MyFirstProject.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 
 import java.time.LocalDate;
 import java.util.Date;
+@Table(name = "applicant")
 
 @Entity
 public  class Applicant {
@@ -19,8 +17,8 @@ public  class Applicant {
     String name;
     LocalDate dob;
     String gender;
-    String phone_no;
-    String email_id;
+    String phoneNo;
+    String emailId;
     int age;
     String address;
     String zipcode;
@@ -30,15 +28,10 @@ public  class Applicant {
 
     }
 
-    public Applicant(String name, LocalDate dob, String gender, String phone_no, String email_id, String address, String zipcode,String password) {
-        this.name = name;
-        this.dob = dob;
-        this.gender = gender;
-        this.phone_no = phone_no;
-        this.email_id = email_id;
-        this.address = address;
-        this.zipcode = zipcode;
-        this.password=password;
+    public Applicant(String emailId ) {
+
+        this.emailId = emailId;
+
     }
 
     public Applicant(int id, int age) {
@@ -78,20 +71,20 @@ public  class Applicant {
         this.gender = gender;
     }
 
-    public String getPhone_no() {
-        return phone_no;
+    public String getPhoneNo() {
+        return phoneNo;
     }
 
-    public void setPhone_no(String phone_no) {
-        this.phone_no = phone_no;
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
     }
 
-    public String getEmail_id() {
-        return email_id;
+    public String getEmailId() {
+        return emailId;
     }
 
-    public void setEmail_id(String email_id) {
-        this.email_id = email_id;
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
     }
 
     public int getAge() {
@@ -125,6 +118,4 @@ public  class Applicant {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
 }
