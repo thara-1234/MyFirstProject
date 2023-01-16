@@ -51,17 +51,22 @@ public class ApplicantService {
         }
         applicantRepository.save(applicant);
     }
-    public String loginApplicant(LoginApplicant loginApplicant){
+//    public String loginApplicant(LoginApplicant loginApplicant){
+//
+//        if(applicantRepository.login(loginApplicant.getEmail(),loginApplicant.getPassword())==1) {
+//            return loginApplicant.getEmail();
+//        }
+//            else {
+//               throw new IllegalArgumentException("Invalid data");
+//        }}}
 
-        if(applicantRepository.login(loginApplicant.getEmail(),loginApplicant.getPassword())==1) {
-            return loginApplicant.getEmail();
-        }
-            else {
-               throw new IllegalArgumentException("Invalid data");
-        }}}
 
+    public Applicant loginApplicant(LoginApplicant loginApplicant){
 
+        return applicantRepository.login(loginApplicant.getEmail(),loginApplicant.getPassword());
+      }
 
+}
 
 
 

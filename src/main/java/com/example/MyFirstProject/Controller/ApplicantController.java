@@ -20,6 +20,6 @@ public class ApplicantController {
         applicantService.createAnApplicant(applicant);
     }
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public void login(@RequestBody LoginApplicant loginApplicant){
-        applicantService.loginApplicant(loginApplicant);
+    public Applicant login(@RequestBody LoginApplicant loginApplicant){
+        return applicantService.loginApplicant(loginApplicant);
     }}
