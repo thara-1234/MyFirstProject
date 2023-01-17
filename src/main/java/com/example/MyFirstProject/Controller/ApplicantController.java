@@ -19,7 +19,5 @@ public class ApplicantController {
     public void createApplicants(@RequestBody Applicant applicant){
         applicantService.createAnApplicant(applicant);
     }
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public Applicant login(@RequestBody LoginApplicant loginApplicant){
-        return applicantService.loginApplicant(loginApplicant);
-    }}
+
+    }

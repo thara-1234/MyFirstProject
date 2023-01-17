@@ -19,11 +19,11 @@ public class ApplicantService {
 
     public void createAnApplicant(Applicant applicant) {
 
-            if (applicant.getPhone_no().length() != 10) {
+            if (applicant.getPhoneNo().length() != 10) {
                 throw new IllegalArgumentException("Invalid Phone Number");
             }
 
-            if (!applicant.getEmail_id().endsWith(".com")) {
+            if (!applicant.getEmailId().endsWith(".com")) {
                 throw new IllegalArgumentException("Invalid Mail ID");
         }
 
@@ -39,8 +39,8 @@ public class ApplicantService {
                throw new IllegalArgumentException("Invalid Zipcode");
            }
 
-        if(applicant.getId()==0 || applicant.getPhone_no()==null||applicant.getZipcode()==null||applicant.getAge()==0
-                ||applicant.getEmail_id()==null||applicant.getAddress()==null||applicant.getGender()==null||
+        if(applicant.getId()==0 || applicant.getPhoneNo()==null||applicant.getZipcode()==null||applicant.getAge()==0
+                ||applicant.getEmailId()==null||applicant.getAddress()==null||applicant.getGender()==null||
         applicant.getName()==null||applicant.getDob()==null){
             throw new IllegalArgumentException("Values cannot be null");
            }
