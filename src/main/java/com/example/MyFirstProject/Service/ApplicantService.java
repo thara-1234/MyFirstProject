@@ -15,7 +15,7 @@ import static java.time.LocalDate.parse;
 public class ApplicantService {
     @Autowired
     ApplicantRepository applicantRepository;
-     Applicant applicant;
+
 
     public void createAnApplicant(Applicant applicant) {
 

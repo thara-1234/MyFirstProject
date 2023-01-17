@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApplicantController {
     @Autowired
     ApplicantService applicantService;
-    @RequestMapping(value = "/register",method = RequestMethod.POST)
+    @RequestMapping(value = "/Register",method = RequestMethod.POST)
     public void createApplicants(@RequestBody Applicant applicant){
         applicantService.createAnApplicant(applicant);
     }

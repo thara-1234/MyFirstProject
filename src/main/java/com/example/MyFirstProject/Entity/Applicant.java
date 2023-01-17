@@ -28,17 +28,6 @@ public  class Applicant {
 
     }
 
-    public Applicant(String emailId ) {
-
-        this.emailId = emailId;
-
-    }
-
-    public Applicant(int id, int age) {
-        this.id = id;
-        this.age = age;
-    }
-
     public int getId() {
         return id;
     }
