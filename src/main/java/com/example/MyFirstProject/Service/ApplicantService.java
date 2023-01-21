@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.Period;
 
-import static java.time.LocalDate.parse;
+
 
 @Service
 public class ApplicantService {
@@ -44,11 +44,12 @@ public class ApplicantService {
         applicant.getName()==null||applicant.getDob()==null){
             throw new IllegalArgumentException("Values cannot be null");
            }
-        if(applicant.getPassword().length()!=6 &&  applicant.getPassword().matches("[a-zA-Z0-9]+")){
+        if(applicant.getPassword().length()<=6 &&  applicant.getPassword().matches("[a-zA-Z0-9]+")){
             throw new IllegalArgumentException("Invalid Password");
 
         }
-        applicantRepository.save(applicant);
+       applicantRepository.save(applicant);
+        System.out.println(applicantRepository.findByEmailIdAndPassword("anju@gmail.com",applicant.getPassword()).toString());
     }
 
 

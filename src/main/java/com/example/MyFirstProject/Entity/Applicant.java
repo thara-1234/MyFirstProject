@@ -4,15 +4,15 @@ import jakarta.persistence.*;
 
 
 import java.time.LocalDate;
-import java.util.Date;
-@Table(name = "applicant")
+
+
 
 @Entity
 public  class Applicant {
 
 
    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     String name;
     LocalDate dob;
@@ -26,6 +26,22 @@ public  class Applicant {
 
     public Applicant(){
 
+    }
+
+    @Override
+    public String toString() {
+        return "Applicant{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dob=" + dob +
+                ", gender='" + gender + '\'' +
+                ", phoneNo='" + phoneNo + '\'' +
+                ", emailId='" + emailId + '\'' +
+                ", age=" + age +
+                ", address='" + address + '\'' +
+                ", zipcode='" + zipcode + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 
     public int getId() {
