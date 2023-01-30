@@ -17,7 +17,9 @@ public  class Applicant {
     String name;
     LocalDate dob;
     String gender;
+    @Column(name = "phoneNo")
     String phoneNo;
+    @Column(name = "email_id")
     String emailId;
     int age;
     String address;
@@ -27,22 +29,25 @@ public  class Applicant {
     public Applicant(){
 
     }
+      public Applicant(String emailId){
+        this.emailId=emailId;
+      }
 
-    @Override
-    public String toString() {
-        return "Applicant{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", dob=" + dob +
-                ", gender='" + gender + '\'' +
-                ", phoneNo='" + phoneNo + '\'' +
-                ", emailId='" + emailId + '\'' +
-                ", age=" + age +
-                ", address='" + address + '\'' +
-                ", zipcode='" + zipcode + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Applicant{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", dob=" + dob +
+//                ", gender='" + gender + '\'' +
+//                ", phoneNo='" + phoneNo + '\'' +
+//                ", emailId='" + emailId + '\'' +
+//                ", age=" + age +
+//                ", address='" + address + '\'' +
+//                ", zipcode='" + zipcode + '\'' +
+//                ", password='" + password + '\'' +
+//                '}';
+   // }
 
     public int getId() {
         return id;

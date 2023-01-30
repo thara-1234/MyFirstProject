@@ -19,5 +19,7 @@ public class ApplicantController {
     public void createApplicants(@RequestBody Applicant applicant){
         applicantService.createAnApplicant(applicant);
     }
-
-    }
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    public void login(@RequestBody LoginApplicant loginApplicant){
+        applicantService.loginApplicant(loginApplicant);
+    }}
