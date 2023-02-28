@@ -46,9 +46,22 @@ public class ApplicantService {
                 applicant.getName() == null || applicant.getDob() == null) {
             throw new IllegalArgumentException("Values cannot be null");
         }
-        if (applicant.getPassword().length() <= 6 && applicant.getPassword().matches("[a-zA-Z0-9]+")) {
+        if (applicant.getPassword().length()>= 6 && applicant.getPassword().matches("[a-zA-Z0-9]+")) {
+            String encryptpass = null;
+            char[] chars = applicant.getPassword().toCharArray();
+            for (char c : chars) {
+                c += 4;
+                encryptpass = Character.toString(c);
+            }
+
+        }
+        else{
             throw new IllegalArgumentException("Invalid Password");
         }
+
+
+
+
         if(applicantRepository.countByEmailId(applicant.getEmailId())>0){
            throw new NotFoundException("Already registered emailId");
        }
