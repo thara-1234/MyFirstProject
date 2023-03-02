@@ -3,6 +3,7 @@ package com.example.MyFirstProject.Entity;
 import jakarta.persistence.*;
 
 
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 
 
@@ -121,11 +122,19 @@ public  class Applicant {
         this.zipcode = zipcode;
     }
 
-    public String getPassword() {
-        return password;
-    }
+
 
     public void setPassword(String password) {
-        this.password = password;
-    }
-}
+        byte[] bytes =password.getBytes(StandardCharsets.UTF_8);
+        for (int i=0;i<bytes.length;i++) {
+            bytes[i] += 3;
+            this.password = Byte.toString(bytes[i]);
+        }}
+    public String getPassword() {
+        return password;
+    }}
+
+
+
+
+
