@@ -3,9 +3,11 @@ package com.example.MyFirstProject.Entity;
 import jakarta.persistence.*;
 
 
-import java.nio.charset.StandardCharsets;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
-
+import java.util.Base64;
 
 
 @Entity
@@ -124,12 +126,15 @@ public  class Applicant {
 
 
 
-    public void setPassword(String password) {
-        byte[] bytes =password.getBytes(StandardCharsets.UTF_8);
-        for (int i=0;i<bytes.length;i++) {
-            bytes[i] += 3;
-            this.password = Byte.toString(bytes[i]);
-        }}
+    public void setPassword(String password) throws NoSuchAlgorithmException {
+
+        KeyGenerator keyGen = KeyGenerator.getInstance("AES");
+        keyGen.init(256);
+        SecretKey secretKey = keyGen.generateKey();
+        String encodedKey = Base64.getEncoder().encodeToString(secretKey.getEncoded());
+        this.password=encodedKey;
+
+        }
     public String getPassword() {
         return password;
     }}
