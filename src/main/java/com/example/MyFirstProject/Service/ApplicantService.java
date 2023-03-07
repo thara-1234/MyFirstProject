@@ -8,9 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Base64;
 import java.util.List;
+
+import static javax.crypto.KeyGenerator.getInstance;
 
 
 @Service
@@ -19,7 +25,7 @@ public class ApplicantService {
     ApplicantRepository applicantRepository;
 
 
-    public void createAnApplicant(Applicant applicant) {
+    public void createAnApplicant(Applicant applicant) throws NoSuchAlgorithmException {
 
         if (applicant.getPhoneNo().length() != 10) {
             throw new IllegalArgumentException("Invalid Phone Number");
@@ -46,9 +52,16 @@ public class ApplicantService {
                 applicant.getName() == null || applicant.getDob() == null) {
             throw new IllegalArgumentException("Values cannot be null");
         }
-        if (applicant.getPassword().length()<=6 && applicant.getPassword().matches("")) {
+       if (applicant.getPassword().length()<=6 && applicant.getPassword().matches("[a-zA-Z0-9]+")) {
             throw new IllegalArgumentException("Invalid Password");
-        }
+      }
+       else{
+           KeyGenerator keyGen = getInstance("AES");
+           keyGen.init(256);
+           SecretKey secretKey = keyGen.generateKey();
+           String encodedKey = Base64.getEncoder().encodeToString(secretKey.getEncoded());
+            applicant.setPassword(encodedKey);
+       }
 
 
         if(applicantRepository.countByEmailId(applicant.getEmailId())>0){

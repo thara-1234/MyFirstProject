@@ -9,6 +9,8 @@ import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.util.Base64;
 
+import static javax.crypto.KeyGenerator.getInstance;
+
 
 @Entity
 public  class Applicant {
@@ -125,19 +127,14 @@ public  class Applicant {
     }
 
 
-
-    public void setPassword(String password) throws NoSuchAlgorithmException {
-
-        KeyGenerator keyGen = KeyGenerator.getInstance("AES");
-        keyGen.init(256);
-        SecretKey secretKey = keyGen.generateKey();
-        String encodedKey = Base64.getEncoder().encodeToString(secretKey.getEncoded());
-        this.password=encodedKey;
-
-        }
     public String getPassword() {
         return password;
-    }}
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}
 
 
 
