@@ -26,8 +26,8 @@ public class ApplicantService {
     @Autowired
     ApplicantRepository applicantRepository;
 
-
     final String SECRET_KEY = "a1b2c3d4e5f6g7h8i9j10k11l12m13n1";
+
     public void createAnApplicant(Applicant applicant) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
 
         if (applicant.getPhoneNo().length() != 10) {
@@ -76,25 +76,22 @@ public class ApplicantService {
         applicantRepository.save(applicant);
     }
 public Applicant loginApplicant(LoginApplicant loginApplicant) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
-
+    Key key = new SecretKeySpec(SECRET_KEY.getBytes(), "AES");
+    Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+          cipher.init(Cipher.ENCRYPT_MODE, key);
+           byte[] encryptedBytes = cipher.doFinal(loginApplicant.getPassword().getBytes());
+           String encryptedMessage = Base64.getEncoder().encodeToString(encryptedBytes);
+    loginApplicant.setPassword(encryptedMessage);
+   // loginApplicant.getPassword().matches(a.getPassword());
      Applicant a = applicantRepository.login(loginApplicant.getEmailId(),loginApplicant.getPassword());
+System.out.print(a.getEmailId());
+    System.out.print(a.getPassword());
 
-
-    if (a.getEmailId()==null) {
-        throw new NotFoundException("Invalid email Id");
+    if (a==null) {
+        throw new NotFoundException("Invalid email Id or password");
     }
-    else {
-        Key key = new SecretKeySpec(SECRET_KEY.getBytes(), "AES");
-
-        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-        cipher.init(Cipher.ENCRYPT_MODE, key);
-        byte[] encryptedBytes = cipher.doFinal(loginApplicant.getPassword().getBytes());
-        String encryptedMessage = Base64.getEncoder().encodeToString(encryptedBytes);
-         loginApplicant.setPassword(encryptedMessage);
-         loginApplicant.getPassword().matches(a.getPassword());
-    }
-    return null;
-    }}
+    return a;
+}}
 
 
 
