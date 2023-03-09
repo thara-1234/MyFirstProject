@@ -82,11 +82,7 @@ public Applicant loginApplicant(LoginApplicant loginApplicant) throws NoSuchAlgo
            byte[] encryptedBytes = cipher.doFinal(loginApplicant.getPassword().getBytes());
            String encryptedMessage = Base64.getEncoder().encodeToString(encryptedBytes);
     loginApplicant.setPassword(encryptedMessage);
-   // loginApplicant.getPassword().matches(a.getPassword());
-     Applicant a = applicantRepository.login(loginApplicant.getEmailId(),loginApplicant.getPassword());
-System.out.print(a.getEmailId());
-    System.out.print(a.getPassword());
-
+    Applicant a = applicantRepository.login(loginApplicant.getEmailId(),loginApplicant.getPassword());
     if (a==null) {
         throw new NotFoundException("Invalid email Id or password");
     }
