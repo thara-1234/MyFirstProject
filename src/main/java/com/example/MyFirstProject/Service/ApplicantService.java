@@ -77,7 +77,8 @@ public class ApplicantService {
     }
 public Applicant loginApplicant(LoginApplicant loginApplicant) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
 
-    Applicant a = applicantRepository.login(loginApplicant.getEmailId(),loginApplicant.getPassword());
+     Applicant a = applicantRepository.login(loginApplicant.getEmailId(),loginApplicant.getPassword());
+
 
     if (a.getEmailId()==null) {
         throw new NotFoundException("Invalid email Id");
