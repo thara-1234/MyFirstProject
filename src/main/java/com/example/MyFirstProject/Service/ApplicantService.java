@@ -16,6 +16,7 @@ import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Base64;
+import java.util.List;
 
 
 import static javax.crypto.KeyGenerator.getInstance;
@@ -87,7 +88,19 @@ public Applicant loginApplicant(LoginApplicant loginApplicant) throws NoSuchAlgo
         throw new NotFoundException("Invalid email Id or password");
     }
     return a;
-}}
+}
+public List<String> findApplicantsName(Applicant applicant){
+        List<String> ApplicantName=applicantRepository.findAll(applicant.getName());
+         return ApplicantName;
+}
+
+ }
+
+
+
+
+
+
 
 
 
