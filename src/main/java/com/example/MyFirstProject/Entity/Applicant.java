@@ -1,26 +1,31 @@
 package com.example.MyFirstProject.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.Base64;
+
+import static javax.crypto.KeyGenerator.getInstance;
+
 
 @Entity
 public  class Applicant {
 
 
    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     String name;
     LocalDate dob;
     String gender;
-    String phone_no;
-    String email_id;
+    @Column(name = "phoneNo")
+    String phoneNo;
+    @Column(name = "email_id")
+    String emailId;
     int age;
     String address;
     String zipcode;
@@ -29,22 +34,25 @@ public  class Applicant {
     public Applicant(){
 
     }
+      public Applicant(String emailId){
+        this.emailId=emailId;
+      }
 
-    public Applicant(String name, LocalDate dob, String gender, String phone_no, String email_id, String address, String zipcode,String password) {
-        this.name = name;
-        this.dob = dob;
-        this.gender = gender;
-        this.phone_no = phone_no;
-        this.email_id = email_id;
-        this.address = address;
-        this.zipcode = zipcode;
-        this.password=password;
-    }
-
-    public Applicant(int id, int age) {
-        this.id = id;
-        this.age = age;
-    }
+//    @Override
+//    public String toString() {
+//        return "Applicant{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", dob=" + dob +
+//                ", gender='" + gender + '\'' +
+//                ", phoneNo='" + phoneNo + '\'' +
+//                ", emailId='" + emailId + '\'' +
+//                ", age=" + age +
+//                ", address='" + address + '\'' +
+//                ", zipcode='" + zipcode + '\'' +
+//                ", password='" + password + '\'' +
+//                '}';
+   // }
 
     public int getId() {
         return id;
@@ -78,20 +86,20 @@ public  class Applicant {
         this.gender = gender;
     }
 
-    public String getPhone_no() {
-        return phone_no;
+    public String getPhoneNo() {
+        return phoneNo;
     }
 
-    public void setPhone_no(String phone_no) {
-        this.phone_no = phone_no;
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
     }
 
-    public String getEmail_id() {
-        return email_id;
+    public String getEmailId() {
+        return emailId;
     }
 
-    public void setEmail_id(String email_id) {
-        this.email_id = email_id;
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
     }
 
     public int getAge() {
@@ -118,6 +126,7 @@ public  class Applicant {
         this.zipcode = zipcode;
     }
 
+
     public String getPassword() {
         return password;
     }
@@ -125,6 +134,9 @@ public  class Applicant {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
 }
+
+
+
+
+
